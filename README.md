@@ -10,7 +10,8 @@
     ```
     npm start
     ```
-3. INSTALLING AND USING PUG: 
+3. USING TEMPLATING ENGINE: 
+* PUG: 
     ```
     npm install --save ejs pug express-handlebars
     ```
@@ -18,4 +19,7 @@
         ```
         npm install pug
         ``` 
-
+* HANDLE BARS: 
+    ```
+    npm install --save express-handlebars@3.0
+    ```
