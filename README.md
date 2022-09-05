@@ -10,3 +10,12 @@
     ```
     npm start
     ```
+3. INSTALLING AND USING PUG: 
+    ```
+    npm install --save ejs pug express-handlebars
+    ```
+    * If you want to use pug (more extensions):
+        ```
+        npm install pug
+        ``` 
+
