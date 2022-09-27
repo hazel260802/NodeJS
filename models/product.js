@@ -1,23 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+const config = require('../util/database');
+const sql = require('mssql');
 
-const Cart = require('./cart');
-
-const p = path.join(
-  path.dirname(process.mainModule.filename),
-  'data',
-  'products.json'
-);
-
-const getProductsFromFile = cb => {
-  fs.readFile(p, (err, fileContent) => {
-    if (err) {
-      cb([]);
-    } else {
-      cb(JSON.parse(fileContent));
-    }
-  });
-};
 
 module.exports = class Product {
   constructor(id, title, imageUrl, description, price) {
@@ -28,47 +11,56 @@ module.exports = class Product {
     this.price = price;
   }
 
-  save() {
-    getProductsFromFile(products => {
-      if (this.id) {
-        const existingProductIndex = products.findIndex(
-          prod => prod.id === this.id
-        );
-        const updatedProducts = [...products];
-        updatedProducts[existingProductIndex] = this;
-        fs.writeFile(p, JSON.stringify(updatedProducts), err => {
-          console.log(err);
-        });
-      } else {
-        this.id = Math.random().toString();
-        products.push(this);
-        fs.writeFile(p, JSON.stringify(products), err => {
-          console.log(err);
-        });
-      }
-    });
-  }
 
-  static deleteById(id) {
-    getProductsFromFile(products => {
-      const product = products.find(prod => prod.id === id);
-      const updatedProducts = products.filter(prod => prod.id !== id);
-      fs.writeFile(p, JSON.stringify(updatedProducts), err => {
-        if (!err) {
-          Cart.deleteProduct(id, product.price);
-        }
-      });
-    });
-  }
+  async AddProduct() {
+    try{
+        let pool = await sql.connect(config);
+        const sqlString = "INSERT INTO products (title, price, imageUrl, description) VALUES (@title,@price,@imageUrl,@description)"
+        let res = await pool.request()
+        .input('title', sql.VarChar, this.title)
+        .input('price', sql.VarChar, this.price)
+        .input('imageUrl', sql.VarChar, this.imageUrl)
+        .input('description', sql.VarChar, this.description)
+        .query(sqlString);
+        return res.recordsets;
+    } catch (error){
+        console.log(" mathus-error :" + error);
+    }
+}
+  static async DeleteProduct(id) {
+    try{
+        let pool = await sql.connect(config);
+        const sqlString = "DELETE FROM products WHERE products.id=@id"
+        let res = await pool.request()
+        .input('id', sql.Int, id)
+        .query(sqlString);
+        return res.recordsets;
+    } catch (error){
+        console.log(" mathus-error :" + error);
+    }
+}
+  static async fetchAll() {
+    try{
+        let pool = await sql.connect(config);
+        const sqlString = "SELECT * FROM products"
+        let res = await pool.request()
+        .query(sqlString);
+        return res.recordsets;
+    } catch (error){
+        console.log(" mathus-error :" + error);
+    }
+}
 
-  static fetchAll(cb) {
-    getProductsFromFile(cb);
-  }
-
-  static findById(id, cb) {
-    getProductsFromFile(products => {
-      const product = products.find(p => p.id === id);
-      cb(product);
-    });
-  }
+  static async findById(id) {
+    try{
+        let pool = await sql.connect(config);
+        const sqlString = "SELECT * FROM products WHERE products.id = @id"
+        let res = await pool.request()
+        .input('id', sql.Int, id)
+        .query(sqlString);
+        return res.recordsets;
+    } catch (error){
+        console.log(" mathus-error :" + error);
+    }
+}
 };

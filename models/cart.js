@@ -1,74 +1,48 @@
-const fs = require('fs');
-const path = require('path');
+const config = require('../util/database');
+const sql = require('mssql');
 
-const p = path.join(
-  path.dirname(process.mainModule.filename),
-  'data',
-  'cart.json'
-);
-
-module.exports = class Cart {
-  static addProduct(id, productPrice) {
-    // Fetch the previous cart
-    fs.readFile(p, (err, fileContent) => {
-      let cart = { products: [], totalPrice: 0 };
-      if (!err) {
-        cart = JSON.parse(fileContent);
-      }
-      // Analyze the cart => Find existing product
-      const existingProductIndex = cart.products.findIndex(
-        prod => prod.id === id
-      );
-      const existingProduct = cart.products[existingProductIndex];
-      let updatedProduct;
-      // Add new product/ increase quantity
-      if (existingProduct) {
-        updatedProduct = { ...existingProduct };
-        updatedProduct.qty = updatedProduct.qty + 1;
-        cart.products = [...cart.products];
-        cart.products[existingProductIndex] = updatedProduct;
-      } else {
-        updatedProduct = { id: id, qty: 1 };
-        cart.products = [...cart.products, updatedProduct];
-      }
-      cart.totalPrice = cart.totalPrice + +productPrice;
-      fs.writeFile(p, JSON.stringify(cart), err => {
-        console.log(err);
-      });
-    });
+module.exports = class Cart{
+  constructor(id,quantity, totalPrice) {
+      this.id=id;
+      this.quantity=quantity;
+      this.totalPrice=totalPrice;
   }
 
-  static deleteProduct(id, productPrice) {
-    fs.readFile(p, (err, fileContent) => {
-      if (err) {
-        return;
-      }
-      const updatedCart = { ...JSON.parse(fileContent) };
-      const product = updatedCart.products.find(prod => prod.id === id);
-      if (!product) {
-          return;
-      }
-      const productQty = product.qty;
-      updatedCart.products = updatedCart.products.filter(
-        prod => prod.id !== id
-      );
-      updatedCart.totalPrice =
-        updatedCart.totalPrice - productPrice * productQty;
-
-      fs.writeFile(p, JSON.stringify(updatedCart), err => {
-        console.log(err);
-      });
-    });
+  async addProduct() {
+    try{
+      let pool = await sql.connect(config);
+      const sqlString = "INSERT INTO cart(id) VALUES (@id)"
+      let res = await pool.request()
+      .input('id', sql.Int, this.id)
+      .query(sqlString);
+      return res.recordsets;
+    } 
+    catch (error){
+        console.log(" mathus-error :" + error);
+    }
   }
 
-  static getCart(cb) {
-    fs.readFile(p, (err, fileContent) => {
-      const cart = JSON.parse(fileContent);
-      if (err) {
-        cb(null);
-      } else {
-        cb(cart);
-      }
-    });
+  static async deleteProduct(id) {
+    try{
+        let pool = await sql.connect(config);
+        const sqlString = "DELETE FROM cart WHERE id=@id"
+        let res = await pool.request()
+        .input('id', sql.Int, id)
+        .query(sqlString);
+        return res.recordsets;
+    } catch (error){
+        console.log(" mathus-error :" + error);
+    }
   }
+  static async getCart(){
+    try{
+        let pool = await sql.connect(config);
+        const sqlString = "SELECT * FROM cart"
+        let res = await pool.request()
+        .query(sqlString);
+        return res.recordsets;
+    } catch (error){
+        console.log(" mathus-error :" + error);
+    }
+}
 };
