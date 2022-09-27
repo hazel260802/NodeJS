@@ -27,3 +27,16 @@
     ```
     npm install ejs
     ```
+4. UPLOAD ON GITHUB:
+* To create new repository:
+     ```
+    git checkout -b SQL_Server
+     ```
+* To switch to this repository, please do all these necessary steps:
+     ```
+    git checkout SQL_Server
+    git add .
+    git commit -m  "App in SQL database and Nodejs"
+    git push --set-upstream origin SQL_Server
+    ```
+
