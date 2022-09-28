@@ -1,26 +1,14 @@
-const config = {
-    server: 'localhost',
-    user: 'sa',
-    database: 'master',
-    password: 'Trang26082k2',
-    options: {
-        trustedconnection: true,
-        enableArithAbort: false,
-        trustServerCertificate: true,
-        cryptoCredentialsDetails: {
-            minVersion: 'TLSv1'
-        },
-        encrypt: false
-    },
-    pool: {
-        min: 1, 
-        max: 100, 
-        idleTimeoutMillis: 30000
-    },
-    //resave: true,
-	//saveUninitialized: true
-};
-
-module.exports = config;
-
-
+const Sequelize = require('sequelize').Sequelize;
+const sequelize = new Sequelize('master', 'sa', 'Trang26082k2', {
+    dialect: 'mssql',
+    host: 'localhost',
+    dialectOptions: {
+      // Observe the need for this nested `options` field for MSSQL
+      options: {
+        // Your tedious options here
+        useUTC: false,
+        dateFirst: 1
+      }
+    }
+});
+module.exports = sequelize;

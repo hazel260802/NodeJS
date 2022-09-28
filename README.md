@@ -1,28 +1,24 @@
 # NodeJS Course on Udemy
-##### THIS IS MY OWN PROCESS ON UDEMY 
+## Sequelize Lesson 
 1. INSTALLING SOME USEFUL PACKAGES:
     ```
-    git init
-    npm install -save express
-    npm install --save-dev nodemon
+    npm install --save sequelize
+    npm install --save body-parser
+    npm install --save ejs
+    npm install --save express-session
+    npm install --save mssql
+    npm install --save msnodesqlv8
+    npm install --save connect-mssql-v2
+    npm install --save bcryptjs
+    npm install --save csurf
+    npm install --save connect-flash
+    npm install --save express-validator
     ```
 2. RUN APP: 
     ```
     npm start
     ```
 3. USING TEMPLATING ENGINE: 
-* Pug: 
-    ```
-    npm install --save ejs pug express-handlebars
-    ```
-    * If you want to use pug (more extensions):
-        ```
-        npm install pug
-        ``` 
-* HandleBars: 
-    ```
-    npm install --save express-handlebars@3.0
-    ```
 * Ejs: 
     ```
     npm install ejs
@@ -30,13 +26,13 @@
 4. UPLOAD ON GITHUB:
 * To create new repository:
      ```
-    git checkout -b SQL_Server
+    git checkout -b Sequelize
      ```
 * To switch to this repository, please do all these necessary steps:
      ```
-    git checkout SQL_Server
+    git checkout Sequelize
     git add .
-    git commit -m  "App in SQL database and Nodejs"
-    git push --set-upstream origin SQL_Server
+    git commit -m  "App created by Sequelize and Nodejs"
+    git push --set-upstream origin Sequelize
     ```
 
