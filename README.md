@@ -1,5 +1,27 @@
 # NodeJS Course on Udemy
 ## Sequelize Lesson 
+### App initialization
+1. NodeJS
+ - [Download and Install NodeJs](https://nodejs.org/en/) Current
+ - Clone from Github 
+2. NPM
+ - Installing npm
+```
+npm install
+```
+ - Initialize npm
+```
+ npm init
+```
+ - Installing Nodemon
+```
+npm install nodemon --save-dev
+```
+ - Installing Express 
+```
+npm install --save express 
+```
+### Workflow
 1. INSTALLING SOME USEFUL PACKAGES:
     ```
     npm install --save sequelize
