@@ -1,4 +1,4 @@
-# Sequelize Lesson 
+# MongoDB Lesson 
 ## App initialization
 1. NodeJS
  - [Download and Install NodeJs](https://nodejs.org/en/) Current
@@ -32,13 +32,9 @@ mongod
 ## Workflow
 1. INSTALLING SOME USEFUL PACKAGES:
     ```
-    npm install --save sequelize
     npm install --save body-parser
     npm install --save ejs
     npm install --save express-session
-    npm install --save mssql
-    npm install --save msnodesqlv8
-    npm install --save connect-mssql-v2
     npm install --save bcryptjs
     npm install --save csurf
     npm install --save connect-flash
@@ -56,13 +52,13 @@ mongod
 4. UPLOAD ON GITHUB:
 * To create new repository:
      ```
-    git checkout -b Sequelize
+    git checkout -b MongoDB
      ```
 * To switch to this repository, please do all these necessary steps:
      ```
-    git checkout Sequelize
+    git checkout MongoDB
     git add .
-    git commit -m  "App created by Sequelize and Nodejs"
-    git push --set-upstream origin Sequelize
+    git commit -m  "App created by MongoDB and Nodejs"
+    git push --set-upstream origin MongoDB
     ```
 
