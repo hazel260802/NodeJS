@@ -20,6 +20,15 @@ npm install nodemon --save-dev
 ```
 npm install --save express 
 ```
+3. MongoDB
+```
+npm install --save mongodb
+```
+ - Fix mongoDB Connection problem:
+ ```
+mongod
+```
+
 ## Workflow
 1. INSTALLING SOME USEFUL PACKAGES:
     ```
