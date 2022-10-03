@@ -1,4 +1,4 @@
-# MongoDB Lesson 
+# Mongoose Lesson 
 ## App initialization
 1. NodeJS
  - [Download and Install NodeJs](https://nodejs.org/en/) Current
@@ -20,13 +20,9 @@ npm install nodemon --save-dev
 ```
 npm install --save express 
 ```
-3. MongoDB
+3. Mongoose
 ```
-npm install --save mongodb
-```
- - Fix mongoDB Connection problem:
- ```
-mongod
+npm install --save mongoose
 ```
 
 ## Workflow
@@ -52,13 +48,13 @@ mongod
 4. UPLOAD ON GITHUB:
 * To create new repository:
      ```
-    git checkout -b MongoDB
+    git checkout -b Mongoose
      ```
 * To switch to this repository, please do all these necessary steps:
      ```
-    git checkout MongoDB
+    git checkout Mongoose
     git add .
-    git commit -m  "App created by MongoDB and Nodejs"
-    git push --set-upstream origin MongoDB
+    git commit -m  "App created by Mongoose and Nodejs"
+    git push --set-upstream origin Mongoose
     ```
 
