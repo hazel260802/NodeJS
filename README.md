@@ -1,4 +1,4 @@
-# Mongoose Lesson 
+# Sessions & Cookies Lesson 
 ## App initialization
 1. NodeJS
  - [Download and Install NodeJs](https://nodejs.org/en/) Current
@@ -24,7 +24,10 @@ npm install --save express
 ```
 npm install --save mongoose
 ```
-
+4. Session
+```
+npm install --save express-session
+```
 ## Workflow
 1. INSTALLING SOME USEFUL PACKAGES:
     ```
@@ -35,6 +38,7 @@ npm install --save mongoose
     npm install --save csurf
     npm install --save connect-flash
     npm install --save express-validator
+    npm install connect-mongodb-session
     ```
 2. RUN APP: 
     ```
@@ -48,13 +52,13 @@ npm install --save mongoose
 4. UPLOAD ON GITHUB:
 * To create new repository:
      ```
-    git checkout -b Mongoose
+    git checkout -b Sessions
      ```
 * To switch to this repository, please do all these necessary steps:
      ```
-    git checkout Mongoose
+    git checkout Sessions
     git add .
-    git commit -m  "App created by Mongoose and Nodejs"
-    git push --set-upstream origin Mongoose
+    git commit -m  "Working with Sessions & Cookies"
+    git push --set-upstream origin Sessions
     ```
 
