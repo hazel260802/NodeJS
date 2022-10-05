@@ -1,4 +1,4 @@
-# Sessions & Cookies Lesson 
+# Adding Authentication Lesson 
 ## App initialization
 1. NodeJS
  - [Download and Install NodeJs](https://nodejs.org/en/) Current
@@ -52,13 +52,13 @@ npm install --save express-session
 4. UPLOAD ON GITHUB:
 * To create new repository:
      ```
-    git checkout -b Sessions
+    git checkout -b Authentication
      ```
 * To switch to this repository, please do all these necessary steps:
      ```
-    git checkout Sessions
+    git checkout Authentication
     git add .
-    git commit -m  "Working with Sessions & Cookies"
-    git push --set-upstream origin Sessions
+    git commit -m  "Working with Authentication"
+    git push --set-upstream origin Authentication
     ```
 
