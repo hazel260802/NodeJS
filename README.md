@@ -39,6 +39,7 @@ npm install --save express-session
     npm install --save connect-flash
     npm install --save express-validator
     npm install connect-mongodb-session
+    npm install --save nodemailer nodemailer-sendgrid-transport
     ```
 2. RUN APP: 
     ```
@@ -58,7 +59,7 @@ npm install --save express-session
      ```
     git checkout Authentication
     git add .
-    git commit -m  "Working with Authentication"
+    git commit -m  "Working with Advanced Authentication"
     git push --set-upstream origin Authentication
     ```
 
