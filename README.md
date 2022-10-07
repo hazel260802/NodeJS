@@ -1,4 +1,4 @@
-# Adding Authentication Lesson 
+# Understanding Validation Lesson 
 ## App initialization
 1. NodeJS
  - [Download and Install NodeJs](https://nodejs.org/en/) Current
@@ -53,13 +53,13 @@ npm install --save express-session
 4. UPLOAD ON GITHUB:
 * To create new repository:
      ```
-    git checkout -b Authentication
+    git checkout -b Validation
      ```
 * To switch to this repository, please do all these necessary steps:
      ```
-    git checkout Authentication
+    git checkout Validation
     git add .
-    git commit -m  "Working with Advanced Authentication"
-    git push --set-upstream origin Authentication
+    git commit -m  "Working with Validation"
+    git push --set-upstream origin Validation
     ```
 
